@@ -1,0 +1,207 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+@import "tw-animate-css";
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  /* Shadcn/UI Colors */
+  --color-background: #1a1d29;
+  --color-foreground: #ffffff;
+
+  --color-card: #2a2d3a;
+  --color-card-foreground: #ffffff;
+
+  --color-popover: #2a2d3a;
+  --color-popover-foreground: #ffffff;
+
+  --color-primary: #ff6b35; /* Accent Orange */
+  --color-primary-foreground: #ffffff;
+
+  --color-secondary: #8b5cf6; /* Accent Purple */
+  --color-secondary-foreground: #ffffff;
+
+  --color-muted: #9ca3af; /* Text Gray */
+  --color-muted-foreground: #ffffff;
+
+  --color-accent: #10b981; /* Success Green */
+  --color-accent-foreground: #ffffff;
+
+  --color-destructive: #ef4444;
+  --color-destructive-foreground: #ffffff;
+
+  --color-border: #374151; /* Darker gray for borders */
+  --color-input: #2a2d3a;
+  --color-ring: #ff6b35;
+
+  --color-chart-1: #e67e22;
+  --color-chart-2: #2d8659;
+  --color-chart-3: #1e3a5f;
+  --color-chart-4: #f1c40f;
+  --color-chart-5: #e74c3c;
+
+  --color-sidebar: #2a2d3a;
+  --color-sidebar-foreground: #ffffff;
+  --color-sidebar-primary: #ff6b35;
+  --color-sidebar-primary-foreground: #ffffff;
+  --color-sidebar-accent: #8b5cf6;
+  --color-sidebar-accent-foreground: #ffffff;
+  --color-sidebar-border: #374151;
+  --color-sidebar-ring: #ff6b35;
+
+  /* Custom Colors */
+  --color-text-white: #ffffff;
+  --color-text-gray: #9ca3af;
+  --color-blue-primary: #3b82f6;
+  --color-burgundy: #7c2d12;
+  --color-dark-background: #1a1d29;
+  --color-dark-card: #2a2d3a;
+  --color-success-green: #10b981;
+
+  /* Typography */
+  --font-primary: "Inter", sans-serif;
+  --font-hero-headline: "Inter", sans-serif;
+  --font-section-title: "Inter", sans-serif;
+  --font-card-title: "Inter", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-caption: "Inter", sans-serif;
+  --font-button: "Inter", sans-serif;
+
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-border);
+  }
+}
+
+@layer base {
+  :root {
+    --background: var(--color-background);
+    --foreground: var(--color-foreground);
+    --card: var(--color-card);
+    --card-foreground: var(--color-card-foreground);
+    --popover: var(--color-popover);
+    --popover-foreground: var(--color-popover-foreground);
+    --primary: var(--color-primary);
+    --primary-foreground: var(--color-primary-foreground);
+    --secondary: var(--color-secondary);
+    --secondary-foreground: var(--color-secondary-foreground);
+    --muted: var(--color-muted);
+    --muted-foreground: var(--color-muted-foreground);
+    --accent: var(--color-accent);
+    --accent-foreground: var(--color-accent-foreground);
+    --destructive: var(--color-destructive);
+    --destructive-foreground: var(--color-destructive-foreground);
+    --border: var(--color-border);
+    --input: var(--color-input);
+    --ring: var(--color-ring);
+    --chart-1: var(--color-chart-1);
+    --chart-2: var(--color-chart-2);
+    --chart-3: var(--color-chart-3);
+    --chart-4: var(--color-chart-4);
+    --chart-5: var(--color-chart-5);
+    --radius: 0.75rem; /* Default radius for Shadcn components */
+    --sidebar-background: var(--color-sidebar);
+    --sidebar-foreground: var(--color-sidebar-foreground);
+    --sidebar-primary: var(--color-sidebar-primary);
+    --sidebar-primary-foreground: var(--color-sidebar-primary-foreground);
+    --sidebar-accent: var(--color-sidebar-accent);
+    --sidebar-accent-foreground: var(--color-sidebar-accent-foreground);
+    --sidebar-border: var(--color-sidebar-border);
+    --sidebar-ring: var(--color-sidebar-ring);
+  }
+
+  * {
+    border-color: var(--border);
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-body);
+  }
+
+  h1 {
+    font-family: var(--font-hero-headline);
+    font-size: 3.5rem; /* 56px */
+    font-weight: 700;
+    color: var(--color-text-white);
+  }
+
+  h2 {
+    font-family: var(--font-section-title);
+    font-size: 2.625rem; /* 42px */
+    font-weight: 600;
+    color: var(--color-text-white);
+  }
+
+  h3 {
+    font-family: var(--font-card-title);
+    font-size: 1.5rem; /* 24px */
+    font-weight: 500;
+    color: var(--color-text-white);
+  }
+
+  p {
+    font-family: var(--font-body);
+    font-size: 1.125rem; /* 18px */
+    font-weight: 400;
+    color: var(--color-text-gray);
+  }
+
+  a {
+    color: var(--color-blue-primary);
+    text-decoration: none;
+  }
+
+  button {
+    font-family: var(--font-button);
+    font-size: 1rem; /* 16px */
+    font-weight: 500;
+    color: var(--color-text-white);
+  }
+
+  .container {
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+/* Hide Next.js error overlay portal */
+nextjs-portal {
+  display: none !important;
+}
